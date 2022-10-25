@@ -4,7 +4,20 @@ import './App.css';
 import GuestList from './GuestList';
 
 function App() {
-  const { guests } = useContext(AppContext);
+  const {
+    appState,
+    handlers
+  } = useContext(AppContext);
+  const {
+    isFiltered,
+    guests
+  } = appState;
+  const {
+    toggleConfirmationAt,
+    toggleEditingAt,
+    updateNameAt,
+    toggleFilter
+  } = handlers;
 
   return (
     <div className="App">
@@ -20,7 +33,10 @@ function App() {
         <div>
           <h2>Invitees</h2>
           <label>
-            <input type="checkbox" /> Hide those who haven't responded
+            <input type="checkbox"
+              checked={isFiltered}
+              onChange={toggleFilter}
+            /> Hide those who haven't responded
           </label>
         </div>
         <table className="counter">
@@ -39,7 +55,13 @@ function App() {
             </tr>
           </tbody>
         </table>
-        <GuestList guests={guests} />
+        <GuestList
+          guests={guests}
+          toggleConfirmationAt={toggleConfirmationAt}
+          toggleEditingAt={toggleEditingAt}
+          updateNameAt={updateNameAt}
+          isFiltered={isFiltered}
+        />
       </div>
     </div>
   );
