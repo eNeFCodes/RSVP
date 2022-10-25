@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/RSVP/static/css/main.a4ebb867.css",
-    "main.js": "/RSVP/static/js/main.751824a5.js",
-    "static/js/787.9b169cb8.chunk.js": "/RSVP/static/js/787.9b169cb8.chunk.js",
-    "static/media/header-bg.jpg": "/RSVP/static/media/header-bg.1d217543c131e23960d9.jpg",
-    "index.html": "/RSVP/index.html",
-    "main.a4ebb867.css.map": "/RSVP/static/css/main.a4ebb867.css.map",
-    "main.751824a5.js.map": "/RSVP/static/js/main.751824a5.js.map",
-    "787.9b169cb8.chunk.js.map": "/RSVP/static/js/787.9b169cb8.chunk.js.map"
+    "main.css": "/rsvp-app/static/css/main.b32312b5.css",
+    "main.js": "/rsvp-app/static/js/main.94182aa9.js",
+    "static/js/787.9b169cb8.chunk.js": "/rsvp-app/static/js/787.9b169cb8.chunk.js",
+    "static/media/header-bg.jpg": "/rsvp-app/static/media/header-bg.1d217543c131e23960d9.jpg",
+    "index.html": "/rsvp-app/index.html",
+    "main.b32312b5.css.map": "/rsvp-app/static/css/main.b32312b5.css.map",
+    "main.94182aa9.js.map": "/rsvp-app/static/js/main.94182aa9.js.map",
+    "787.9b169cb8.chunk.js.map": "/rsvp-app/static/js/787.9b169cb8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a4ebb867.css",
-    "static/js/main.751824a5.js"
+    "static/css/main.b32312b5.css",
+    "static/js/main.94182aa9.js"
   ]
 }
