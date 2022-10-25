@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AppContext } from './context';
 import './App.css';
 import GuestList from './GuestList';
+import Counter from './Counter';
 
 function App() {
   const {
@@ -20,7 +21,10 @@ function App() {
     updateNameAt,
     toggleFilter,
     handleInvite,
-    handleRemoveAt
+    handleRemoveAt,
+    getTotalInvited,
+    getAttendingGuests,
+    getUnconfirmedGuests
   } = handlers;
 
   const handleFormSubmit = (e) => {
@@ -53,30 +57,18 @@ function App() {
             /> Hide those who haven't responded
           </label>
         </div>
-        <table className="counter">
-          <tbody>
-            <tr>
-              <td>Attending:</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <td>Unconfirmed:</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>Total:</td>
-              <td>3</td>
-            </tr>
-          </tbody>
-        </table>
+        <Counter
+          attending={getAttendingGuests()}
+          unconfirmed={getUnconfirmedGuests()}
+          total={getTotalInvited()} />
         <GuestList
+          pendingGuest={inviteName}
           guests={guests}
           toggleConfirmationAt={toggleConfirmationAt}
           toggleEditingAt={toggleEditingAt}
           updateNameAt={updateNameAt}
           isFiltered={isFiltered}
-          handleRemoveAt={handleRemoveAt}
-        />
+          handleRemoveAt={handleRemoveAt} />
       </div>
     </div>
   );

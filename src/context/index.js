@@ -30,15 +30,15 @@ export const Provider = (props) => {
     }));
 
     const getTotalInvited = () => {
-        return appState.length;
+        return appState.guests.length || 0;
     }
 
     const getAttendingGuests = () => {
-        console.log('getAttendingGuests:', appState.guests);
+        return appState.guests.filter(guest => guest.isConfirmed).length || 0;
     }
 
     const getUnconfirmedGuests = () => {
-        console.log('getUnconfirmedGuests:', appState.guests);
+        return appState.guests.filter(guest => !guest.isConfirmed).length || 0;
     }
 
     const togglePropertyAt = (property, at) => {
@@ -52,7 +52,7 @@ export const Provider = (props) => {
                 return guest;
             }
         });
-        console.log(`toggleConfirmationAt: ${at} -- info: `, guests[at]);
+        // console.log(`toggleConfirmationAt: ${at} -- info: `, guests[at]);
         setAppState({ ...appState, guests });
     }
 
@@ -67,7 +67,7 @@ export const Provider = (props) => {
                 return guest;
             }
         });
-        console.log(`updatePropertyAt: ${at} -- info: `, guests[at]);
+        // console.log(`updatePropertyAt: ${at} -- info: `, guests[at]);
         setAppState({ ...appState, guests });
     }
 

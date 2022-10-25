@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from 'prop-types';
 import Guest from './Guest';
+import PendingGuest from "./PendingGuest";
 
 const GuestList = (props) => {
     const {
@@ -9,7 +10,8 @@ const GuestList = (props) => {
         toggleConfirmationAt,
         toggleEditingAt,
         updateNameAt,
-        handleRemoveAt
+        handleRemoveAt,
+        pendingGuest
     } = props;
 
     const renderGuests = (guests) => {
@@ -30,6 +32,7 @@ const GuestList = (props) => {
 
     return (
         <ul>
+            <PendingGuest name={pendingGuest}/>
             {renderGuests(guests)}
         </ul>
     );
@@ -43,4 +46,5 @@ GuestList.propTypes = {
     toggleEditingAt: PropTypes.func.isRequired,
     updateNameAt: PropTypes.func.isRequired,
     handleRemoveAt: PropTypes.func.isRequired,
+    pendingGuest: PropTypes.string
 };

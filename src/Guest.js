@@ -13,36 +13,23 @@ const Guest = (props) => {
         handleRemove
     } = props;
 
-    const renderGuest = () => {
-        // if (isConfirmed) {
-        return (
-            <li className="responded">
-                <GuestName isEditing={isEditing}
-                    handleSetName={handleSetName}
-                >
-                    {name}
-                </GuestName>
-                <label>
-                    <input type="checkbox"
-                        checked={isConfirmed}
-                        onChange={handleConfirmation}
-                    />Confirmed
-                </label>
-                <button onClick={handleEditing}>
-                    {isEditing ? 'save' : 'edit'}
-                </button>
-                <button onClick={handleRemove}>remove</button>
-            </li>
-        );
-        // } else {
-        //     return <li className="pending"><span>{name}</span></li>
-        // }
-    };
-
     return (
-        <ul>
-            {renderGuest()}
-        </ul>
+        <li className="responded">
+            <GuestName isEditing={isEditing}
+                handleSetName={handleSetName}>
+                {name}
+            </GuestName>
+            <label>
+                <input type="checkbox"
+                    checked={isConfirmed}
+                    onChange={handleConfirmation}
+                />Confirmed
+            </label>
+            <button onClick={handleEditing}>
+                {isEditing ? 'save' : 'edit'}
+            </button>
+            <button onClick={handleRemove}>remove</button>
+        </li>
     );
 };
 export default Guest;
