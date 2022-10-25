@@ -9,7 +9,8 @@ const Guest = (props) => {
         isEditing,
         handleConfirmation,
         handleEditing,
-        handleSetName
+        handleSetName,
+        handleRemove
     } = props;
 
     const renderGuest = () => {
@@ -30,7 +31,7 @@ const Guest = (props) => {
                 <button onClick={handleEditing}>
                     {isEditing ? 'save' : 'edit'}
                 </button>
-                <button>remove</button>
+                <button onClick={handleRemove}>remove</button>
             </li>
         );
         // } else {
@@ -52,4 +53,5 @@ Guest.propTypes = {
     isEditing: PropTypes.bool.isRequired,
     handleConfirmation: PropTypes.func.isRequired,
     handleEditing: PropTypes.func.isRequired,
+    handleRemove: PropTypes.func.isRequired,
 };

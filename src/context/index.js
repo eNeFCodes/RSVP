@@ -85,7 +85,31 @@ export const Provider = (props) => {
 
     const toggleFilter = () => {
         setAppState({ ...appState, isFiltered: !appState.isFiltered });
-    };
+    }
+
+    const handleInvite = (name) => {
+        const pendingGuest = {
+            name: name,
+            isConfirmed: false,
+            isEditing: false,
+        };
+
+        setAppState({
+            ...appState,
+            guests: [
+                pendingGuest,
+                ...appState.guests
+            ]
+        });
+    }
+
+    const handleRemoveAt = (index) => {
+        const guests = appState.guests.splice(index, 1);
+        setAppState({
+            ...appState,
+            ...guests
+        });
+    }
 
     const handlers = {
         getTotalInvited,
@@ -94,7 +118,9 @@ export const Provider = (props) => {
         toggleConfirmationAt,
         toggleEditingAt,
         updateNameAt,
-        toggleFilter
+        toggleFilter,
+        handleInvite,
+        handleRemoveAt,
     };
 
     return (

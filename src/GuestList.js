@@ -8,22 +8,24 @@ const GuestList = (props) => {
         guests = [],
         toggleConfirmationAt,
         toggleEditingAt,
-        updateNameAt
+        updateNameAt,
+        handleRemoveAt
     } = props;
 
     const renderGuests = (guests) => {
         return guests
-        .filter(guest => {
-            return isFiltered ? guest.isConfirmed : true;
-        })
-        .map((guest, index) => {
-            return <Guest key={index}
-                {...guest}
-                handleConfirmation={() => toggleConfirmationAt(index)}
-                handleEditing={() => toggleEditingAt(index)}
-                handleSetName={e => updateNameAt(index, e.target.value)}
-            />
-        });
+            .filter(guest => {
+                return !isFiltered || guest.isConfirmed;
+            })
+            .map((guest, index) => {
+                return <Guest key={index}
+                    {...guest}
+                    handleConfirmation={() => toggleConfirmationAt(index)}
+                    handleEditing={() => toggleEditingAt(index)}
+                    handleSetName={e => updateNameAt(index, e.target.value)}
+                    handleRemove={e => handleRemoveAt(index)}
+                />
+            });
     }
 
     return (
@@ -40,4 +42,5 @@ GuestList.propTypes = {
     toggleConfirmationAt: PropTypes.func.isRequired,
     toggleEditingAt: PropTypes.func.isRequired,
     updateNameAt: PropTypes.func.isRequired,
+    handleRemoveAt: PropTypes.func.isRequired,
 };

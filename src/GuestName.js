@@ -25,7 +25,6 @@ const GuestName = (props) => {
 export default GuestName;
 
 GuestName.propTypes = {
-    name: PropTypes.string.isRequired,
     isEditing: PropTypes.bool.isRequired,
     handleSetName: PropTypes.func.isRequired
 };

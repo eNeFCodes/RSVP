@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppContext } from './context';
 import './App.css';
 import GuestList from './GuestList';
@@ -8,6 +8,8 @@ function App() {
     appState,
     handlers
   } = useContext(AppContext);
+  const [inviteName, setInviteName] = useState('');
+
   const {
     isFiltered,
     guests
@@ -16,16 +18,28 @@ function App() {
     toggleConfirmationAt,
     toggleEditingAt,
     updateNameAt,
-    toggleFilter
+    toggleFilter,
+    handleInvite,
+    handleRemoveAt
   } = handlers;
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    handleInvite(inviteName);
+    setInviteName('');
+  }
 
   return (
     <div className="App">
       <header>
         <h1>RSVP</h1>
         <p>A Treehouse App</p>
-        <form>
-          <input type="text" value="Safia" placeholder="Invite Someone" />
+        <form onSubmit={handleFormSubmit}>
+          <input type="text"
+            value={inviteName}
+            placeholder="Invite Someone"
+            onChange={e => setInviteName(e.target.value)}
+          />
           <button type="submit" name="submit" value="submit">Submit</button>
         </form>
       </header>
@@ -61,6 +75,7 @@ function App() {
           toggleEditingAt={toggleEditingAt}
           updateNameAt={updateNameAt}
           isFiltered={isFiltered}
+          handleRemoveAt={handleRemoveAt}
         />
       </div>
     </div>
