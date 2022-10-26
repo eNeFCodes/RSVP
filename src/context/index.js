@@ -111,7 +111,7 @@ export const Provider = (props) => {
         const guests = appState.guests.filter(guest => guest.id !== guestId);
         setAppState({
             ...appState,
-            ...guests
+            guests
         });
     }
 
