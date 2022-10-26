@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { v1 as uuidv1 } from 'uuid';
 
 export const AppContext = React.createContext();
 
@@ -7,21 +8,25 @@ export const Provider = (props) => {
         isFiltered: false,
         guests: [
             {
+                id: uuidv1(),
                 name: 'Treasure',
                 isConfirmed: false,
                 isEditing: false,
             },
             {
+                id: uuidv1(),
                 name: 'Jin',
                 isConfirmed: false,
                 isEditing: false,
             },
             {
+                id: uuidv1(),
                 name: 'Miu',
                 isConfirmed: true,
                 isEditing: false,
             },
             {
+                id: uuidv1(),
                 name: 'Asuka',
                 isConfirmed: true,
                 isEditing: false,
@@ -41,9 +46,9 @@ export const Provider = (props) => {
         return appState.guests.filter(guest => !guest.isConfirmed).length || 0;
     }
 
-    const togglePropertyAt = (property, at) => {
-        const guests = appState.guests.map((guest, index) => {
-            if (index === at) {
+    const togglePropertyWithId = (property, guestId) => {
+        const guests = appState.guests.map(guest => {
+            if (guest.id === guestId) {
                 return {
                     ...guest,
                     [property]: !guest[property]
@@ -52,13 +57,12 @@ export const Provider = (props) => {
                 return guest;
             }
         });
-        // console.log(`toggleConfirmationAt: ${at} -- info: `, guests[at]);
         setAppState({ ...appState, guests });
     }
 
-    const updatePropertyAt = (property, at, value) => {
-        const guests = appState.guests.map((guest, index) => {
-            if (index === at) {
+    const updatePropertyAt = (property, guestId, value) => {
+        const guests = appState.guests.map(guest => {
+            if (guest.id === guestId) {
                 return {
                     ...guest,
                     [property]: value
@@ -67,20 +71,19 @@ export const Provider = (props) => {
                 return guest;
             }
         });
-        // console.log(`updatePropertyAt: ${at} -- info: `, guests[at]);
         setAppState({ ...appState, guests });
     }
 
-    const toggleConfirmationAt = (index) => {
-        togglePropertyAt('isConfirmed', index);
+    const toggleGuestConfirmationWithId = (guestId) => {
+        togglePropertyWithId('isConfirmed', guestId);
     }
 
-    const toggleEditingAt = (index) => {
-        togglePropertyAt('isEditing', index);
+    const toggleEditingGuestWithId = (guestId) => {
+        togglePropertyWithId('isEditing', guestId);
     }
 
-    const updateNameAt = (index, value) => {
-        updatePropertyAt('name', index, value);
+    const updateGuestNameWithId = (guestId, value) => {
+        updatePropertyAt('name', guestId, value);
     }
 
     const toggleFilter = () => {
@@ -89,6 +92,7 @@ export const Provider = (props) => {
 
     const handleInvite = (name) => {
         const pendingGuest = {
+            id: uuidv1(),
             name: name,
             isConfirmed: false,
             isEditing: false,
@@ -103,8 +107,8 @@ export const Provider = (props) => {
         });
     }
 
-    const handleRemoveAt = (index) => {
-        const guests = appState.guests.splice(index, 1);
+    const handleRemoveGuestWithId = (guestId) => {
+        const guests = appState.guests.filter(guest => guest.id !== guestId);
         setAppState({
             ...appState,
             ...guests
@@ -115,13 +119,17 @@ export const Provider = (props) => {
         getTotalInvited,
         getAttendingGuests,
         getUnconfirmedGuests,
-        toggleConfirmationAt,
-        toggleEditingAt,
-        updateNameAt,
+        toggleGuestConfirmationWithId,
+        toggleEditingGuestWithId,
+        updateGuestNameWithId,
         toggleFilter,
         handleInvite,
-        handleRemoveAt,
+        handleRemoveGuestWithId,
     };
+
+    useEffect(() => {
+        console.log('Guest Lists: ', appState.guests);
+    });
 
     return (
         <AppContext.Provider value={{ appState, handlers }}>

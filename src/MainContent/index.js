@@ -20,11 +20,11 @@ const MainContent = (props) => {
         guests
     } = appState;
     const {
-        toggleConfirmationAt,
-        toggleEditingAt,
-        updateNameAt,
+        toggleGuestConfirmationWithId,
+        toggleEditingGuestWithId,
+        updateGuestNameWithId,
         toggleFilter,
-        handleRemoveAt,
+        handleRemoveGuestWithId,
         getTotalInvited,
         getAttendingGuests,
         getUnconfirmedGuests
@@ -44,11 +44,11 @@ const MainContent = (props) => {
             <GuestList
                 pendingGuest={inviteName}
                 guests={guests}
-                toggleConfirmationAt={toggleConfirmationAt}
-                toggleEditingAt={toggleEditingAt}
-                updateNameAt={updateNameAt}
+                toggleGuestConfirmationWithId={toggleGuestConfirmationWithId}
+                toggleEditingGuestWithId={toggleEditingGuestWithId}
+                updateGuestNameWithId={updateGuestNameWithId}
                 isFiltered={isFiltered}
-                handleRemoveAt={handleRemoveAt}
+                handleRemoveGuestWithId={handleRemoveGuestWithId}
             />
         </div>
     );

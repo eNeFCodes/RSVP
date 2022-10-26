@@ -22,6 +22,6 @@ const AttendeesFilter = (props) => {
 export default AttendeesFilter;
 
 AttendeesFilter.propTypes = {
-    isFiltered: PropTypes.func.isRequired,
+    isFiltered: PropTypes.bool.isRequired,
     toggleFilter: PropTypes.func.isRequired
 };

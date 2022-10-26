@@ -7,10 +7,10 @@ const GuestList = (props) => {
     const {
         isFiltered,
         guests = [],
-        toggleConfirmationAt,
-        toggleEditingAt,
-        updateNameAt,
-        handleRemoveAt,
+        toggleGuestConfirmationWithId,
+        toggleEditingGuestWithId,
+        updateGuestNameWithId,
+        handleRemoveGuestWithId,
         pendingGuest
     } = props;
 
@@ -19,20 +19,20 @@ const GuestList = (props) => {
             .filter(guest => {
                 return !isFiltered || guest.isConfirmed;
             })
-            .map((guest, index) => {
-                return <Guest key={index}
+            .map((guest) => {
+                return <Guest key={guest.id}
                     {...guest}
-                    handleConfirmation={() => toggleConfirmationAt(index)}
-                    handleEditing={() => toggleEditingAt(index)}
-                    handleSetName={e => updateNameAt(index, e.target.value)}
-                    handleRemove={e => handleRemoveAt(index)}
+                    handleConfirmation={() => toggleGuestConfirmationWithId(guest.id)}
+                    handleEditing={() => toggleEditingGuestWithId(guest.id)}
+                    handleSetName={e => updateGuestNameWithId(guest.id, e.target.value)}
+                    handleRemove={e => handleRemoveGuestWithId(guest.id)}
                 />
             });
     }
 
     return (
         <ul>
-            <PendingGuest name={pendingGuest}/>
+            <PendingGuest name={pendingGuest} />
             {renderGuests(guests)}
         </ul>
     );
@@ -42,9 +42,9 @@ export default GuestList;
 GuestList.propTypes = {
     isFiltered: PropTypes.bool.isRequired,
     guests: PropTypes.array.isRequired,
-    toggleConfirmationAt: PropTypes.func.isRequired,
-    toggleEditingAt: PropTypes.func.isRequired,
-    updateNameAt: PropTypes.func.isRequired,
-    handleRemoveAt: PropTypes.func.isRequired,
+    toggleGuestConfirmationWithId: PropTypes.func.isRequired,
+    toggleEditingGuestWithId: PropTypes.func.isRequired,
+    updateGuestNameWithId: PropTypes.func.isRequired,
+    handleRemoveGuestWithId: PropTypes.func.isRequired,
     pendingGuest: PropTypes.string
 };
