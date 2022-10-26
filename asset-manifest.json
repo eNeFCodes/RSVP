@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/RSVP/static/css/main.a4ebb867.css",
-    "main.js": "/RSVP/static/js/main.1338335d.js",
+    "main.js": "/RSVP/static/js/main.ec140d5b.js",
     "static/js/787.b36242c4.chunk.js": "/RSVP/static/js/787.b36242c4.chunk.js",
     "static/media/header-bg.jpg": "/RSVP/static/media/header-bg.1d217543c131e23960d9.jpg",
     "index.html": "/RSVP/index.html",
     "main.a4ebb867.css.map": "/RSVP/static/css/main.a4ebb867.css.map",
-    "main.1338335d.js.map": "/RSVP/static/js/main.1338335d.js.map",
+    "main.ec140d5b.js.map": "/RSVP/static/js/main.ec140d5b.js.map",
     "787.b36242c4.chunk.js.map": "/RSVP/static/js/787.b36242c4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a4ebb867.css",
-    "static/js/main.1338335d.js"
+    "static/js/main.ec140d5b.js"
   ]
 }
